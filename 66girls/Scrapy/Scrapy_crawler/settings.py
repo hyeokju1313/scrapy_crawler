@@ -6,12 +6,10 @@ NEWSPIDER_MODULE = 'Scrapy_crawler.spiders'
 ROBOTSTXT_OBEY = True
 
 ITEM_PIPELINES = {'Scrapy_crawler.pipelines.CsvPipeline': 300, }
-ITEM_PIPELINES = {'Scrapy_crawler.pipelines.JsonPipeline': 300, }
 
 FEED_EXPORT_FIELDS=["source", "title", "url", "thumb"]
 
 DUPEFILTER_CLASS = 'scrapy.dupefilters.BaseDupeFilter'
-
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
