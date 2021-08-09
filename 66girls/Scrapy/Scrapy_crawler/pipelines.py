@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
-import json
-from scrapy.exporters import JsonItemExporter, CsvItemExporter
+from scrapy.exporters import CsvItemExporter
 from itemadapter import ItemAdapter
 
 class CsvPipeline(object):
