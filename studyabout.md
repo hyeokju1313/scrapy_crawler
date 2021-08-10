@@ -11,3 +11,6 @@
 
 > DNS
 > ---
+>    > ### DNS 서버를 바꿔야하는 이유(?)
+>    > * 참고: <https://www.pcmag.com/how-to/how-and-why-to-change-your-dns-server>
+>    >    > 추가자료(서브넷 마스크, 게이트웨이): <https://www.netmanias.com/ko/post/blog/5403/ip-ip-routing-network-protocol/subnet-mask-and-default-gateway>
