@@ -18,4 +18,6 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy_fake_useragent.middleware.RetryUserAgentMiddleware': 401,
 }
 
+CONCURRENT_REQUESTS = 1
+
 DOWNLOAD_DELAY = 5
