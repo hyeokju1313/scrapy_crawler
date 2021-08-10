@@ -7,24 +7,23 @@ from Scrapy_crawler.items import UrlItem
 class UrlSpider(scrapy.Spider):
     name = "UrlCrawler"
     allowed_domains = ["66girls.co.kr"]
-    start_urls = ['https://66girls.co.kr/product/list.html?cate_no=70']
+    
+    def start_requests(self):
+        for i in range(1, 8):
+            yield scrapy.Request("https://66girls.co.kr/product/list.html?cate_no=70&page={0}".format(i), self.parse)
     
     def parse(self, response):
         contents = response.xpath('//*[@class="xans-record-"]/div')
         items = []
         for content in contents:
             item = UrlItem()
+            item['source'] = '66girls-Top'
             try:
-                item['source'] = '66girls-Top'
                 item['title'] = content.xpath('div[2]/strong/a/span[2]/text()').extract()[0]
                 item['url'] = content.xpath('div[1]/div/a/@href').extract()[0]
                 item['thumb'] = content.xpath('div[1]/div/a/img/@src').extract()[0]
             except IndexError:
-                item['title'] = 'no'
-                item['url'] = 'no'
-                item['thumb'] = 'no'
-            # print(item['title'])
-            # print(item['url'])
-            # print(item['thumb'])
+                pass
+            
             items.append(item)
         return items
