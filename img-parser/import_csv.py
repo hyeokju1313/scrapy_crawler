@@ -1,5 +1,4 @@
 import csv
-import pandas as pd
 
 def get_list_csv(filename, column_index, ignore_header = True):
     tags =[]
