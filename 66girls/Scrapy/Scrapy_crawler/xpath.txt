@@ -1,0 +1,47 @@
+# hotping
+class UrlSpider(scrapy.Spider):
+    name = "UrlCrawler"
+    allowed_domains = ["hotping.co.kr"]
+
+    def start_requests(self):
+        for i in range(1, 3):
+            yield scrapy.Request("https://www.hotping.co.kr/product/list.html?cate_no=29&crema-reviews-1-page={0}".format(i), self.parse, dont_filter=True)
+    
+    def parse(self, response):
+        contents = response.xpath('//*[@class="item xans-record-"]/div')
+        items = []
+        for content in contents:
+            item = UrlItem()
+            item['source'] = 'hotping-Top'
+            try:
+                item['title'] = content.xpath('p/a/span/text()').extract()[0]
+                item['url'] = content.xpath('div/a/@href').extract()[0]
+                item['thumb'] = content.xpath('div/a/img/@src').extract()[0]
+            except IndexError: # list index range over error 무시
+                pass
+            items.append(item)
+        return items
+
+# ririnco
+class UrlSpider(scrapy.Spider):
+    name = "UrlCrawler"
+    allowed_domains = ["ririnco.com"]
+
+    def start_requests(self):
+        for i in range(1, 3):
+            yield scrapy.Request("https://ririnco.com/product/list.html?cate_no=55&page={0}".format(i), self.parse, dont_filter=True)
+    
+    def parse(self, response):
+        contents = response.xpath('//*[@class="xans-record-"]')
+        items = []
+        for content in contents:
+            item = UrlItem()
+            item['source'] = 'ririnco-Top'
+            try:
+                item['title'] = content.xpath('div[2]/strong/a/span[2]/text()').extract()[0]
+                item['url'] = content.xpath('div[1]/a/@href').extract()[0]
+                item['thumb'] = content.xpath('div[1]/a/img/@src').extract()[0]
+            except IndexError: # list index range over error 무시
+                pass
+            items.append(item)
+        return items
