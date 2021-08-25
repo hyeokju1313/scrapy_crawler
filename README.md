@@ -7,12 +7,12 @@
 
 ## How to use
 URL Crawl
-'''
+```
 cd ~/Scrapy_Crawler
 scrapy crawl UrlCrawler
-'''
+```
 Img Crawl
-'''
+```
 cd ~/imgparser
 scrapy crawl ImgCrawler
-'''
+```
