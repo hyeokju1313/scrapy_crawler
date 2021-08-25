@@ -1,6 +1,6 @@
 # scrapy_crawler
 
-<img src="https://img.shields.io/badge/Python-3.7-blue"></img>
+<img src="https://img.shields.io/badge/Python-3.8-blue"></img>
 <img src="https://img.shields.io/badge/Scrapy-2.5.0-blue"></img>
   
 ## Overview
